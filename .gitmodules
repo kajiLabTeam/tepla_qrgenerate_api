@@ -1,0 +1,3 @@
+[submodule "sr5900p"]
+	path = sr5900p
+	url = https://github.com/hikalium/sr5900p

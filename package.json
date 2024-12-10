@@ -1,0 +1,16 @@
+{
+  "name": "tepla_qrgenerate_api",
+  "scripts": {
+    "start": "listhen -w --open ./app.ts",
+    "dev": "listhen -w --open ./app.ts",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "h3": "^1.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "listhen": "^1.9.0",
+    "prettier": "^3.4.2"
+  }
+}
