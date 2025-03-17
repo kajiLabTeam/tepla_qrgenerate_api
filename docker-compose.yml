@@ -1,0 +1,11 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/server/Dockerfile
+    container_name: tepra-server
+    ports:
+      - "8001:3000"
+    volumes:
+      - .:/app
+    restart: unless-stopped
