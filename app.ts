@@ -7,6 +7,14 @@ const router = createRouter();
 app.use(router);
 
 router.get(
+  '/',
+  defineEventHandler(async (event) => {
+    return { message: 'Hello, World' };
+  }),
+);
+
+
+router.get(
   '/:text',
   defineEventHandler(async (event) => {
     const text = getRouterParam(event, 'text');
