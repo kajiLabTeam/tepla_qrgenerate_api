@@ -10,7 +10,30 @@ router.get(
   '/:text',
   defineEventHandler(async (event) => {
     const text = getRouterParam(event, 'text');
-    exec(`sr5900p print --printer 192.168.100.10 --qr-text '${text}'`);
-    return { message: 'ok' };
+
+    const runCommand = () => {
+      return new Promise((resolve, reject) => {
+        exec(`sr5900p print --printer 192.168.100.10 --qr-text '${text}'`, (error, stdout, stderr) => {
+          if (error) {
+            reject(`exec error: ${error}`);
+            return;
+          }
+          if (stderr) {
+            reject(`stderr: ${stderr}`);
+            return;
+          }
+          console.log(`stdout: ${stdout}`);
+          resolve(stdout);
+        });
+      });
+    };
+
+    try {
+      await runCommand();
+      return { message: 'ok' };
+    } catch (err) {
+      console.error(err);
+      return { message: 'Error occurred' };
+    }
   }),
 );
