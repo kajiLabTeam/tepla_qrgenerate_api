@@ -17,6 +17,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 
 RUN /root/.cargo/bin/cargo --version
 
+RUN git submodule init && git submodule update
 RUN /bin/bash -c "source $HOME/.cargo/env && cd sr5900p && make install"
 
 RUN pnpm install --frozen-lockfile
