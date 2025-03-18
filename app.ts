@@ -10,7 +10,6 @@ router.get(
   '/:text',
   defineEventHandler(async (event) => {
     const text = getRouterParam(event, 'text');
-    console.log(`text: ${text}`);
 
     const runCommand = () => {
       return new Promise((resolve, reject) => {
@@ -31,10 +30,10 @@ router.get(
 
     try {
       await runCommand();
-      return { message: 'ok' }; 
+      return { message: 'ok' };
     } catch (err) {
       console.error(err);
-      return { message: 'Error occurred' };  
+      return { message: 'Error occurred' };
     }
   }),
 );
